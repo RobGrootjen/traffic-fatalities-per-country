@@ -1,0 +1,116 @@
+{
+  "name": "country-death-by-traffic",
+  "title": "Country death by traffic",
+  "resources": [
+    {
+      "path": "DeathByTraffic.csv",
+      "pathType": "local",
+      "name": "deathbytraffic",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "UTF-8",
+      "dialect": {
+        "delimiter": ",",
+        "quoteChar": "\""
+      },
+      "schema": {
+        "fields": [
+          {
+            "name": "Country",
+            "type": "string",
+            "format": "default"
+          },
+          {
+            "name": "Road fatalities per 100000 inhabitants per year",
+            "type": "number",
+            "format": "default"
+          },
+          {
+            "name": "Road fatalities per 100000 motor vehicles",
+            "type": "number",
+            "format": "default"
+          },
+          {
+            "name": "Estimated fatalities per year",
+            "type": "any",
+            "format": "default"
+          }
+        ],
+        "missingValues": [
+          ""
+        ]
+      }
+    },
+    {
+      "path": "process.py",
+      "pathType": "local",
+      "name": "process",
+      "format": "py",
+      "encoding": "ISO-8859-1"
+    },
+    {
+      "path": "requirements.txt",
+      "pathType": "local",
+      "name": "requirements",
+      "format": "txt",
+      "mediatype": "text/plain",
+      "encoding": "ISO-8859-1"
+    }
+  ],
+  "readme": "This dataset provides data from every country about the estimated fatalities. It also includes road fatalities with motor vehicles and inhabitants of every country. As you might have expected, China is the most fatal country regarding traffic accidents.\r\n\r\n## Data Preparation\r\n\r\n##### Sources\r\nThe data is sourced from \r\n* https://en.wikipedia.org/wiki/List_of_countries_by_traffic-related_death_rate\r\n\r\n##### Requirements\r\nThe data preparation was performed using Python Programming Language version 3.8. running on a AMD A10 (64-bit) windows on a Lenovo Z50 laptop.\r\n\r\n##### Processing \r\nThe data was scraped and cleaned up with a script called \"process.py\" which will be located in the process folder of this repo.\r\n\r\n##### Extras\r\n* There is a requirements.txt with all the Python 3x libraries needed included in the repo\r\n\r\n##### Necessary python libraries for this: \r\n* bs4\r\n* csv\r\n* requests\r\n* lxml\r\n\r\n##### Instructions:\r\n* Download \"requirements.txt\".\r\n* Go to your terminal and use the following command ```pip install requirements.txt```\r\n* Copy process.py script\r\n* Open in jupyter notebook, python shell, VS code, or any preferred platform.\r\n* Paste and run the code\r\n* 1 CSV file named \"DeathByTraffic.csv\" will be saved in document where your terminal is at the moment.\r\n\r\n## Licence\r\nThis Data Package is made available under the Public Domain Dedication and License v1.0.",
+  "description": "This dataset provides data from every country about the estimated fatalities. It also includes road ",
+  "licenses": [
+    {
+      "name": "ODC-PDDL",
+      "path": "http://opendatacommons.org/licenses/pddl/",
+      "title": "Open Data Commons Public Domain Dedication and License"
+    }
+  ],
+  "views": [
+    {
+      "name": "Road fatalities per 100000 inhabitants per year per country.",
+      "title": "Road fatalities per 100000 inhabitants per year per country.",
+      "resources": [
+        "deathbytraffic"
+      ],
+      "specType": "simple",
+      "spec": {
+        "type": "line",
+        "group": "Country",
+        "series": [
+          "Road fatalities per 100000 inhabitants per year"
+        ]
+      }
+    },
+    {
+      "name": "Road fatalities per 100000 motor vehicles per year per country.",
+      "title": "Road fatalities per 100000 motor vehicles per year per country.",
+      "resources": [
+        "deathbytraffic"
+      ],
+      "specType": "simple",
+      "spec": {
+        "type": "Line",
+        "group": "Country",
+        "series": [
+          "Road fatalities per 100000 motor vehicles"
+        ]
+      }
+    },
+    {
+      "name": "Estimated fatalities per year per country.",
+      "title": "Estimated fatalities per year per country.",
+      "resources": [
+        "deathbytraffic"
+      ],
+      "specType": "simple",
+      "spec": {
+        "type": "line",
+        "group": "Country",
+        "series": [
+          "Estimated fatalities per year"
+        ]
+      }
+    }
+  ]
+}
